@@ -44,6 +44,11 @@ export const addPost = () => {
   rerenderEntireTree(state)
 }
 
+export const updateNewPostText = (newText) => {
+  state.profilePage.newPostText = newText
+  rerenderEntireTree(state)
+}
+
 export const subscribe = (observer) => {
   rerenderEntireTree = observer
 }

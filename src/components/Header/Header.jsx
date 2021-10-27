@@ -4,7 +4,7 @@ import s from './Header.module.css'
 const Header = () => {
   return (
     <header className={s.header}>
-      <img src="src='https://www.freelogodesign.org/Content/img/logo-ex-7.png'" alt=""/>
+      <img src="https://static.wikia.nocookie.net/brawlhalla_gamepedia/images/0/00/Avatar_Silly_Face.png" alt=""/>
     </header>
   )
 }

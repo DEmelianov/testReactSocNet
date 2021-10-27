@@ -29,6 +29,9 @@ const MyPosts = (props) => {
             value={props.newPostText}
           />
         </div>
+        <div>
+          <button onClick={addPost}>add Post</button>
+        </div>
       </div>
       <div className={s.posts}>
         {postsElements}
