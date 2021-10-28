@@ -3,12 +3,14 @@ import profileReducer from "./profile-reduser";
 import dialogsReducer from "./dialogs-reduser";
 import sidebarReducer from "./sidebar-reducer";
 
-let reducers = combineReducers ({
+let reducers = combineReducers({
   profilePage: profileReducer,
   dialogsPage: dialogsReducer,
   sidebar: sidebarReducer
 })
 
 let store = createStore(reducers)
+
+window.store = store
 
 export default store
