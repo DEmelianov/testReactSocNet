@@ -1,9 +1,15 @@
 import React from 'react'
 import style from './Users.module.scss'
-
+import * as axios from 'axios'
+import userPhoto from '../../assets/img/user_photo_small.png'
 const Users = (props) => {
   if (props.users.length === 0) {
-    props.setUsers(
+    axios
+      .get('https://social-network.samuraijs.com/api/1.0/users')
+      .then(response => {
+        props.setUsers(response.data.items)
+      })
+    /*props.setUsers(
       [
         {
           id: 1,
@@ -39,7 +45,7 @@ const Users = (props) => {
           }
         }
       ]
-    )
+    )*/
   }
 
   return (
@@ -50,7 +56,7 @@ const Users = (props) => {
               <div key={user.id}>
                 <span>
                   <div>
-                    <img src={user.photoUrl}
+                    <img src={user.photos.small || userPhoto}
                          className={style.userPhoto}
                          alt=""/>
                   </div>
@@ -70,12 +76,12 @@ const Users = (props) => {
                 </span>
                 <span>
                   <span>
-                    <div>{user.fullName}</div>
+                    <div>{user.name}</div>
                     <div>{user.status}</div>
                   </span>
                   <span>
-                    <div>{user.location.country}</div>
-                    <div>{user.location.city}</div>
+                    <div>{"user.location.country"}</div>
+                    <div>{"user.location.city"}</div>
                   </span>
                 </span>
               </div>
