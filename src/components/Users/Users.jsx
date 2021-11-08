@@ -1,28 +1,34 @@
-import React from 'react'
-import style from './Users.module.scss'
-import * as axios from 'axios'
-import userPhoto from '../../assets/img/user_photo_small.png'
+import style from "./Users.module.scss";
+import userPhoto from "../../assets/img/user_photo_small.png";
+import React from "react";
 
-class Users extends React.Component {
-  componentDidMount() {
-    this.getUsers()
+const Users = (props) => {
+  let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
+  let pages = []
+  for (let i = 1; i <= pagesCount; i++) {
+    pages.push(i)
   }
 
-  getUsers() {
-    axios
-      .get('https://social-network.samuraijs.com/api/1.0/users')
-      .then(response => {
-        this.props.setUsers(response.data.items)
-      })
-  }
-
-  render() {
-    return (
+  return (
+    <div>
       <div>
         {
-          this.props.users.map(user => {
-              return (
-                <div key={user.id}>
+          pages.map(page => {
+            return (
+              <span key={'page' + page}
+                    className={props.currentPage === page && style.selectedPage}
+                    onClick={() => props.onPageChanged(page)}
+              >
+                  {page}
+                </span>
+            )
+          })
+        }
+      </div>
+      {
+        props.users.map(user => {
+            return (
+              <div key={user.id}>
                 <span>
                   <div>
                     <img src={user.photos.small || userPhoto}
@@ -33,7 +39,7 @@ class Users extends React.Component {
                     <button
                       onClick={
                         () => {
-                          user.followed ? this.props.unfollow(user.id) : this.props.follow(user.id)
+                          user.followed ? props.unfollow(user.id) : props.follow(user.id)
                         }
                       }
                     >
@@ -43,7 +49,7 @@ class Users extends React.Component {
                     </button>
                   </div>
                 </span>
-                  <span>
+                <span>
                   <span>
                     <div>{user.name}</div>
                     <div>{user.status}</div>
@@ -53,14 +59,13 @@ class Users extends React.Component {
                     <div>{"user.location.city"}</div>
                   </span>
                 </span>
-                </div>
-              )
-            }
-          )
-        }
-      </div>
-    )
-  }
+              </div>
+            )
+          }
+        )
+      }
+    </div>
+  )
 }
 
 export default Users
