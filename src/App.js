@@ -20,7 +20,7 @@ const App = () => {
           }
         />
         <Route
-          path="/profile"
+          path="/profile/:userId?"
           render={() =>
             <ProfileContainer/>
           }
