@@ -46,9 +46,11 @@ const Users = (props) => {
                           user.followed
                             ? (
                               axios
-                                .delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {withCredentials: true})
-                                .then(response => {
-
+                                .delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
+                                  withCredentials: true,
+                                  headers: {
+                                    'API-KEY': 'b7966b07-c235-4419-8e44-b431e2d687e7'
+                                  }
                                 })
                                 .then(() => {
                                   props.unfollow(user.id)
@@ -56,7 +58,16 @@ const Users = (props) => {
                             )
                             : (
                               axios
-                                .post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, null, {withCredentials: true})
+                                .post(
+                                  `https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
+                                  null,
+                                  {
+                                    withCredentials: true,
+                                    headers: {
+                                      'API-KEY': 'b7966b07-c235-4419-8e44-b431e2d687e7'
+                                    }
+                                  }
+                                )
                                 .then(response => {
 
                                 })
