@@ -86,17 +86,15 @@ export const getUsers = (currentPage, pageSize) => {
   }
 }
 
-export const follow = (userId) => {
-  return (dispatch) => {
-    dispatch(setIsFollowingInProgress(true, userId))
-    usersAPI.follow(userId)
-      .then((response) => {
-        if (response.data.resultCode === 0) {
-          dispatch(followSuccess(userId))
-        }
-        dispatch(setIsFollowingInProgress(false, userId))
-      })
-  }
+export const follow = (userId) => (dispatch) => {
+  dispatch(setIsFollowingInProgress(true, userId))
+  usersAPI.follow(userId)
+    .then((response) => {
+      if (response.data.resultCode === 0) {
+        dispatch(followSuccess(userId))
+      }
+      dispatch(setIsFollowingInProgress(false, userId))
+    })
 }
 
 export const unfollow = (userId) => {
