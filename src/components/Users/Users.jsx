@@ -41,8 +41,10 @@ const Users = (props) => {
                   </div>
                   <div>
                     <button
+                      disabled={props.followingInProgress.some(id => id === user.id)}
                       onClick={
                         () => {
+                          props.setIsFollowingInProgress(true, user.id)
                           user.followed
                             ? (
                               axios
@@ -52,8 +54,11 @@ const Users = (props) => {
                                     'API-KEY': 'b7966b07-c235-4419-8e44-b431e2d687e7'
                                   }
                                 })
-                                .then(() => {
-                                  props.unfollow(user.id)
+                                .then((response) => {
+                                  if (response.data.resultCode === 0) {
+                                    props.follow(user.id)
+                                  }
+                                  props.setIsFollowingInProgress(false, user.id)
                                 })
                             )
                             : (
@@ -68,11 +73,11 @@ const Users = (props) => {
                                     }
                                   }
                                 )
-                                .then(response => {
-
-                                })
-                                .then(() => {
-                                  props.follow(user.id)
+                                .then((response) => {
+                                  if (response.data.resultCode === 0) {
+                                    props.follow(user.id)
+                                  }
+                                  props.setIsFollowingInProgress(false, user.id)
                                 })
                             )
                         }
