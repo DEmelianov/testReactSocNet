@@ -2,41 +2,22 @@ import React from 'react'
 import {connect} from "react-redux"
 import {
   follow,
+  getUsers,
   setCurrentPage,
-  setIsFetching,
-  setIsFollowingInProgress,
-  setTotalUsersCount,
-  setUsers,
   unfollow
 } from "../../redux/users-reducer"
 import Users from "./Users"
 import Preloader from "../common/Preloader/Preloder";
-import {usersAPI} from "../../api/api";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    this.props.setIsFetching(true)
-    usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-      this.props.setIsFetching(false)
-      this.props.setUsers(data.items)
-      this.props.setTotalUsersCount(data.totalCount)
-    })
+    this.props.getUsers(this.props.currentPage, this.props.pageSize)
   }
 
-
-  // follow = (userId) => {
-  //   axios
-  //     .post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, null, {withCredentials: true})
-  //     .then(response => {
-  //       debugger
-  //     })
-  //     .catch(response => {
-  //       debugger
-  //     })
-  // }
-
   onPageChanged = (page) => {
-    if (this.props.currentPage !== page) {
+    this.props.setCurrentPage(page)
+    this.props.getUsers(page, this.props.pageSize)
+    /*if (this.props.currentPage !== page) {
       this.props.setCurrentPage(page)
       this.props.setIsFetching(true)
       usersAPI.getUsers(page, this.props.pageSize).then(data => {
@@ -44,7 +25,7 @@ class UsersContainer extends React.Component {
         this.props.setUsers(data.items)
         this.props.setTotalUsersCount(data.totalCount)
       })
-    }
+    }*/
   }
 
   render() {
@@ -60,7 +41,6 @@ class UsersContainer extends React.Component {
           follow={this.props.follow}
           unfollow={this.props.unfollow}
           followingInProgress={this.props.followingInProgress}
-          setIsFollowingInProgress={this.props.setIsFollowingInProgress}
         />
       </>
     )
@@ -104,6 +84,9 @@ const mapStateToProps = (state) => {
 export default connect(
   mapStateToProps,
   {
-    follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, setIsFetching, setIsFollowingInProgress
+    follow,
+    unfollow,
+    setCurrentPage,
+    getUsers,
   }
 )(UsersContainer)
