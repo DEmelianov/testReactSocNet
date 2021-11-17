@@ -8,11 +8,18 @@ const Header = (props) => {
       <img src="https://static.wikia.nocookie.net/brawlhalla_gamepedia/images/0/00/Avatar_Silly_Face.png" alt=""/>
       <div className={s.loginBlock}>
         {
-          !props.isAuth ?
-            <NavLink to="/login">
+          !props.isAuth
+            ? <NavLink to="/login">
               Login
-            </NavLink> :
-            props.login
+            </NavLink>
+            : <div>
+              {props.login}
+              <button
+                onClick={props.logout}
+              >
+                logout
+              </button>
+            </div>
         }
       </div>
     </header>
