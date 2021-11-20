@@ -9,9 +9,10 @@ import style from '../../components/common/FormControls/FormControls.module.css'
 
 const maxLength30 = maxLengthCreator(30)
 
-export const LoginForm = (props) => {
+// export const LoginForm = (props) => {
+export const LoginForm = ({handleSubmit, error}) => {
   return (
-    <form action="" onSubmit={props.handleSubmit}>
+    <form action="" onSubmit={handleSubmit}>
       <div>
         <Field
           placeholder={"Email"}
@@ -37,9 +38,9 @@ export const LoginForm = (props) => {
         /> remember me
       </div>
       {
-        props.error &&
+        error &&
           <div className={style.formError}>
-            {props.error}
+            {error}
           </div>
       }
       <div>
