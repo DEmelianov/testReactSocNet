@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/testReactSocNet/static/css/main.71c5a1fe.chunk.css",
+    "main.css": "/testReactSocNet/static/css/main.8155fd71.chunk.css",
     "main.js": "/testReactSocNet/static/js/main.971780c9.chunk.js",
     "main.js.map": "/testReactSocNet/static/js/main.971780c9.chunk.js.map",
     "runtime-main.js": "/testReactSocNet/static/js/runtime-main.a1e8ec66.js",
@@ -18,7 +18,7 @@
     "index.html": "/testReactSocNet/index.html",
     "static/css/3.cacacb53.chunk.css.map": "/testReactSocNet/static/css/3.cacacb53.chunk.css.map",
     "static/css/4.87c437a9.chunk.css.map": "/testReactSocNet/static/css/4.87c437a9.chunk.css.map",
-    "static/css/main.71c5a1fe.chunk.css.map": "/testReactSocNet/static/css/main.71c5a1fe.chunk.css.map",
+    "static/css/main.8155fd71.chunk.css.map": "/testReactSocNet/static/css/main.8155fd71.chunk.css.map",
     "static/js/2.37d92091.chunk.js.LICENSE.txt": "/testReactSocNet/static/js/2.37d92091.chunk.js.LICENSE.txt",
     "static/media/preloader.372b42cf.gif": "/testReactSocNet/static/media/preloader.372b42cf.gif",
     "static/media/user_photo_small.6d3461ac.png": "/testReactSocNet/static/media/user_photo_small.6d3461ac.png"
@@ -26,7 +26,7 @@
   "entrypoints": [
     "static/js/runtime-main.a1e8ec66.js",
     "static/js/2.37d92091.chunk.js",
-    "static/css/main.71c5a1fe.chunk.css",
+    "static/css/main.8155fd71.chunk.css",
     "static/js/main.971780c9.chunk.js"
   ]
 }
